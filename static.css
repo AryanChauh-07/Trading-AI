@@ -1,0 +1,65 @@
+/* Styles for static pages like About and Disclaimer */
+
+.static-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100vh;
+}
+
+.static-header {
+    text-align: center;
+    padding: 24px 26px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    background: var(--bg-card);
+    box-shadow: var(--shadow-soft);
+}
+
+.static-header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+}
+
+.static-header p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.static-content {
+    padding: 26px 30px;
+}
+
+.static-content h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.static-content p, .static-content li {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.static-content ul {
+    list-style-position: inside;
+    padding-left: 8px;
+}
+
+.static-footer {
+    text-align: center;
+    padding-top: 24px;
+    margin-top: auto;
+    font-weight: 600;
+    color: var(--color-indigo);
+}
