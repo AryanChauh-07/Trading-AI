@@ -1845,7 +1845,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Function to update all UI elements that display currency
     function updateAllCurrencyDisplays() {
-        updateBalanceUI(); // Updates header balance
+        updateBalanceUI(); // Updates header balance display
+        updateHeaderStats(); // Updates Net Profit and Active Trade counts
         renderWatchlist(); // Re-renders watchlist with new currency prices
         renderActivePositions(); // Re-renders active positions with new currency PnL/prices
         renderTradeHistory(); // Re-renders trade history with new currency PnL/prices
