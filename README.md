@@ -70,43 +70,8 @@ Stock market data API
 AI/LLM API (if applicable)
 🚀 Getting Started
 1. Clone the repository
-git clone https://github.com/your-username/Trading-AI.git
+git clone https://github.com/AryanChauhan-07/Trading-AI.git
 cd Trading-AI
-
-2. Install dependencies
-
-Install the dependencies required by your project.
-
-For example:
-
-pip install -r requirements.txt
-
-
-or:
-
-npm install
-
-3. Configure environment variables
-
-Create a .env file in the project root:
-
-API_KEY=your_api_key
-DATABASE_URL=your_database_url
-AI_API_KEY=your_ai_api_key
-
-
-Never commit API keys or other sensitive credentials to GitHub.
-
-4. Run the application
-
-Use the appropriate command for your project:
-
-python app.py
-
-
-or:
-
-npm start
 
 💡 How It Works
 
