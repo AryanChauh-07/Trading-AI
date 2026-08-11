@@ -577,6 +577,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const elEstimateProfit = document.getElementById("estimate-profit");
     const elEstimateLoss = document.getElementById("estimate-loss");
     const btnExecuteTrade = document.getElementById("btn-execute-trade");
+    const btnResetWalletHeader = document.getElementById("btn-reset-wallet-header"); // New button for header
     const btnApplyTargets = document.getElementById("btn-apply-targets");
     const btnResetWallet = document.getElementById("btn-reset-wallet");
     const demoTradingGuide = document.getElementById("demo-trading-guide");
@@ -1798,8 +1799,8 @@ document.addEventListener("DOMContentLoaded", () => {
         showToast("AI Advisory setup applied to Simulator.", 'success');
     });
 
-    // Reset the demo wallet and trade history
-    btnResetWallet.addEventListener("click", () => {
+    // Common function to reset the demo wallet and trade history
+    function resetDemoWallet() {
         if (confirm("Reset the demo wallet and clear all trades?")) {
             userBalanceUSD = 100000.00; // Reset USD balance
             activePositions = [];
@@ -1807,19 +1808,31 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("apex_balance_usd", userBalanceUSD.toFixed(2)); // Store USD balance
             localStorage.setItem("apex_positions", JSON.stringify(activePositions));
             localStorage.setItem("apex_history", JSON.stringify(tradeHistory));
+            
             updateBalanceUI();
             renderActivePositions();
             renderTradeHistory();
             updateHeaderStats();
+            
+            // Reset simulator inputs
             inputMargin.value = 1000;
             inputLeverage.value = 10;
             inputTP.value = 0;
             inputSL.value = 0;
             updateCalculatorOutput();
+            
             demoTradingGuide.classList.remove("hidden"); // Show the guide again after resetting
             showToast("Demo wallet reset to $100,000.", 'success');
         }
-    });
+    }
+
+    // Event listener for the existing reset wallet button (in simulator card)
+    btnResetWallet.addEventListener("click", resetDemoWallet);
+    
+    // Event listener for the new header reset button
+    if (btnResetWalletHeader) {
+        btnResetWalletHeader.addEventListener("click", resetDemoWallet);
+    }
 
     // Handle manual entry of TP/SL prices in simulator
     inputTP.addEventListener("input", () => {
