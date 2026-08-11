@@ -595,6 +595,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const elToast = document.getElementById("toast");
     const elToastMessage = document.getElementById("toast-message");
 
+    const marketTickerTrack = document.getElementById('market-ticker-track');
+
 
     // --- HELPER UTILITIES FOR CURRENCY ---
 
@@ -616,6 +618,68 @@ document.addEventListener("DOMContentLoaded", () => {
         let convertedAmount = amountUSD;
         if (activeCurrency === "INR") { convertedAmount = amountUSD * exchangeRateUSD_INR; }
         return Number(convertedAmount ?? 0).toFixed(decimalPlaces);
+    }
+
+    // --- MARKET TICKER DYNAMIC UPDATE ---
+    const tickerAssetConfig = [
+        { id: 'BTCUSD', display: 'BTC' },
+        { id: 'NVDA', display: 'NVDA' },
+        { id: 'TSLA', display: 'TSLA' },
+        { id: 'RELIANCE', display: 'RELIANCE' },
+        { id: 'GOLD', display: 'Gold' },
+        { id: 'EURUSD', display: 'EUR/USD' }
+    ];
+
+    function initializeMarketTicker() {
+        if (!marketTickerTrack) return;
+
+        const createTickerItemHTML = (assetInfo) => {
+            return `
+                <span class="market-ticker__item">
+                    <strong>${assetInfo.display}</strong>
+                    <span id="ticker-change-${assetInfo.id}"></span>
+                </span>
+            `;
+        };
+
+        let itemsHTML = '';
+        tickerAssetConfig.forEach(assetInfo => {
+            itemsHTML += createTickerItemHTML(assetInfo);
+        });
+
+        // Duplicate for marquee effect, creating unique IDs for the duplicates
+        const duplicateItemsHTML = itemsHTML.replace(/id="ticker-change-/g, 'id="ticker-change-dup-');
+        marketTickerTrack.innerHTML = itemsHTML + duplicateItemsHTML;
+    }
+
+    function updateMarketTicker() {
+        if (!marketTickerTrack) return;
+
+        tickerAssetConfig.forEach(assetInfo => {
+            const asset = assetsData.find(a => a.id === assetInfo.id);
+            if (!asset) return;
+
+            const currentPriceUSD = livePrices[asset.id];
+            const changeValUSD = currentPriceUSD - asset.basePriceUSD;
+            const changePct = (changeValUSD / asset.basePriceUSD) * 100;
+            const isPositive = changeValUSD >= 0;
+            const sign = isPositive ? "+" : "";
+            const colorClass = isPositive ? "text-buy" : "text-sell";
+
+            const changeText = `${sign}${changePct.toFixed(2)}%`;
+
+            const changeEl = document.getElementById(`ticker-change-${assetInfo.id}`);
+            const changeElDup = document.getElementById(`ticker-change-dup-${assetInfo.id}`);
+
+            if (changeEl) {
+                changeEl.textContent = changeText;
+                changeEl.className = colorClass;
+            }
+            if (changeElDup) {
+                changeElDup.textContent = changeText;
+                changeElDup.className = colorClass;
+            }
+        });
     }
 
     // --- TRADINGVIEW WIDGET CONSTRUCTORS ---
@@ -886,6 +950,8 @@ document.addEventListener("DOMContentLoaded", () => {
             updateWatchlistPrices();
             // Recalculate and update open positions PnL
             updatePositionsPnL();
+            // Update the market ticker
+            updateMarketTicker();
         }, 1000);
     }
 
@@ -1861,6 +1927,7 @@ document.addEventListener("DOMContentLoaded", () => {
     startPriceTicks();
 
     // 2. Render initial UI elements
+    initializeMarketTicker();
     updateBalanceUI();
     renderWatchlist();
     renderActivePositions();

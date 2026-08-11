@@ -73,16 +73,11 @@
         </header>
 
         <section class="hero-strip card">
-            <div>
+            <div class="hero-content">
                 <div class="market-ticker" aria-label="Market ticker">
                     <span class="market-ticker__label">Live pulse</span>
-                    <div class="market-ticker__track">
-                        <span class="market-ticker__item"><strong>BTC</strong> +2.14%</span>
-                        <span class="market-ticker__item"><strong>NVDA</strong> +1.82%</span>
-                        <span class="market-ticker__item"><strong>EUR/USD</strong> +0.24%</span>
-                        <span class="market-ticker__item"><strong>Gold</strong> +0.91%</span>
-                        <span class="market-ticker__item"><strong>BTC</strong> +2.14%</span>
-                        <span class="market-ticker__item"><strong>NVDA</strong> +1.82%</span>
+                    <div class="market-ticker__viewport">
+                        <div class="market-ticker__track" id="market-ticker-track"></div>
                     </div>
                 </div>
                 <p class="hero-eyebrow">Live paper trading desk</p>
@@ -94,15 +89,24 @@
                 </div>
             </div>
             <div class="hero-pills">
-                <span class="hero-pill">AI signals</span>
-                <span class="hero-pill">Live watchlist</span>
-                <span class="hero-pill">Paper simulator</span>
+                <a href="#ai-advisory-card" class="hero-pill">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    <span>AI signals</span>
+                </a>
+                <a href="#watchlist-section" class="hero-pill">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <span>Live watchlist</span>
+                </a>
+                <a href="#order-simulator-card" class="hero-pill">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                    <span>Paper simulator</span>
+                </a>
             </div>
         </section>
 
         <div class="dashboard-grid">
             <!-- Left Column: Watchlist & Market Feed -->
-            <aside class="sidebar-left card">
+            <aside class="sidebar-left card" id="watchlist-section">
                 <div class="card-header">
                     <h2>Market Watch</h2>
                     <div class="live-indicator">
@@ -178,7 +182,7 @@
             <!-- Right Column: AI Advisory, Calculator & Simulator -->
             <aside class="sidebar-right">
                 <!-- AI Advisory Console -->
-                <div class="ai-advisory-card card">
+                <div class="ai-advisory-card card" id="ai-advisory-card">
                     <div class="card-header border-bottom">
                         <div class="logo-group">
                             <div class="ai-pulse-ring"></div>
@@ -251,7 +255,7 @@
                 </div>
 
                 <!-- Simulated Order execution / Simulator -->
-                <div class="order-simulator-card card">
+                <div class="order-simulator-card card" id="order-simulator-card">
                     <div class="card-header border-bottom ">
                         <h2>Order Simulator</h2>
                         <span class="mode-badge">Simulated</span>

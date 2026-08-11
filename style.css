@@ -7,6 +7,10 @@
     -webkit-font-smoothing: antialiased;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     /* Color Palette */
     --bg-darker: #0B0F19;
@@ -355,6 +359,11 @@ body::after {
     overflow: hidden;
 }
 
+.hero-content {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
 .hero-strip::before {
     content: "";
     position: absolute;
@@ -424,19 +433,47 @@ body::after {
 
 .hero-pills {
     display: flex;
-    flex-wrap: wrap;
     gap: 8px;
     justify-content: flex-end;
+    flex-shrink: 0;
 }
 
 .hero-pill {
-    padding: 8px 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-color);
     color: var(--text-secondary);
     font-size: 12px;
     font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    /* Animation */
+    opacity: 0;
+    animation: fadeUp 0.5s ease-out forwards;
+}
+
+.hero-pill:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.hero-pills .hero-pill:nth-child(1) {
+    animation-delay: 0.7s;
+}
+
+.hero-pills .hero-pill:nth-child(2) {
+    animation-delay: 0.8s;
+}
+
+.hero-pills .hero-pill:nth-child(3) {
+    animation-delay: 0.9s;
 }
 
 .market-ticker {
@@ -449,7 +486,7 @@ body::after {
     border-radius: 16px; /* Market Ticker */
     background: rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
 }
 
 .market-ticker__label {
@@ -459,6 +496,13 @@ body::after {
     letter-spacing: 0.2em;
     color: var(--color-indigo);
     white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.market-ticker__viewport {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .market-ticker__track {
@@ -466,6 +510,7 @@ body::after {
     gap: 18px;
     white-space: nowrap;
     animation: marquee 18s linear infinite;
+    width: max-content;
 }
 
 .market-ticker__item {
@@ -571,6 +616,11 @@ body::after {
     to {
         transform: translateX(10%);
     }
+}
+
+@keyframes animatedGrid {
+    0% { background-position: 0 0; }
+    100% { background-position: 34px 34px; }
 }
 
 @keyframes marquee {
@@ -1047,6 +1097,7 @@ body::after {
     background-size: 34px 34px;
     mask-image: linear-gradient(180deg, rgba(0,0,0,0.7), transparent 95%);
     pointer-events: none;
+    animation: animatedGrid 8s linear infinite;
 }
 
 .chart-loading-state {
@@ -1064,25 +1115,25 @@ body::after {
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    padding: 20px 24px;
+    padding: 24px 30px; /* Slightly larger padding */
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 14px;
-    background: rgba(7, 10, 20, 0.85); /* Slightly less transparent */
-    box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+    border-radius: 18px; /* Slightly more rounded */
+    background: rgba(7, 10, 20, 0.95); /* More opaque background */
+    box-shadow: 0 24px 50px rgba(0,0,0,0.4); /* More prominent shadow */
     text-align: center;
 }
 
 .chart-loading-animation {
     display: flex;
     align-items: flex-end;
-    justify-content: center;
-    gap: 6px;
-    height: 28px;
+    justify-content: center; /* Center the bars */
+    gap: 8px; /* Increased gap between bars */
+    height: 40px; /* Increased height of the animation area */
     margin-bottom: 4px;
 }
 
 .loading-bar {
-    width: 5px;
+    width: 8px; /* Increased width of each bar */
     height: 100%;
     background: var(--color-indigo);
     border-radius: 99px;
@@ -1105,18 +1156,18 @@ body::after {
     40% {
         transform: scaleY(1.0);
         opacity: 1;
-        box-shadow: 0 0 12px rgba(var(--color-indigo-rgb), 0.5);
+        box-shadow: 0 0 20px rgba(var(--color-indigo-rgb), 0.7); /* More intense glow */
     }
 }
 
 .chart-loading-title {
-    font-size: 14px;
+    font-size: 16px; /* Slightly larger text */
     font-weight: 700;
     color: var(--text-primary);
 }
 
 .chart-loading-subtitle {
-    font-size: 12px;
+    font-size: 13px; /* Slightly larger text */
     color: var(--text-secondary);
 }
 
