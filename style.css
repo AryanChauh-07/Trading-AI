@@ -1921,6 +1921,22 @@ body::after {
     background: rgba(255, 255, 255, 0.06);
 }
 
+.btn-header-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px; /* Adjust padding for icon */
+}
+
+.btn-header-action svg {
+    width: 13px; /* Slightly smaller to fit well */
+    height: 13px;
+    transition: transform var(--transition-fast);
+}
+
+.btn-header-action:hover svg {
+    transform: rotate(-90deg);
+}
 .btn-primary {
     background: var(--color-indigo);
     border: 1px solid var(--color-indigo);
@@ -1933,6 +1949,35 @@ body::after {
     transition: var(--transition-fast);
     text-decoration: none;
     text-align: center;
+}
+
+/* New class for destructive actions */
+.btn-danger {
+    background: var(--color-indigo);
+    border: 1px solid var(--color-indigo);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600; /* Slightly less bold for primary button */
+    padding: 7px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-danger {
+    background: rgba(var(--color-sell-rgb), 0.15);
+    border: 1px solid rgba(var(--color-sell-rgb), 0.4);
+    color: var(--color-sell);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.btn-danger:hover {
+    background: var(--color-sell);
+    border-color: var(--color-sell);
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(var(--color-sell-rgb), 0.4);
 }
 
 .header-actions {
