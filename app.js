@@ -99,6 +99,38 @@ document.addEventListener("DOMContentLoaded", () => {
             rationale: "GOOGL is finding support at the 50-day moving average on the 1h chart. After a period of consolidation, buying volume is starting to increase, suggesting a potential move back towards recent highs. The current price offers a good entry for a swing trade."
         },
         {
+            id: "META",
+            tvSymbol: "NASDAQ:META",
+            name: "Meta Platforms Inc.",
+            category: "stocks",
+            exchange: "NASDAQ",
+            country: "US",
+            basePriceUSD: 490.00,
+            priceDecimals: 2,
+            originalCurrency: "USD",
+            signal: "BUY",
+            strength: 70,
+            bestLap: "1h",
+            lapRatings: { "5m": "Neutral", "15m": "Buy", "1h": "Strong Buy", "1D": "Buy" },
+            rationale: "Meta is consolidating above key support at $485.00. The 1-hour chart shows increasing buying volume and a bullish MACD crossover. Expect a move towards $500.00."
+        },
+        {
+            id: "JNJ",
+            tvSymbol: "NYSE:JNJ",
+            name: "Johnson & Johnson",
+            category: "stocks",
+            exchange: "NYSE",
+            country: "US",
+            basePriceUSD: 150.25,
+            priceDecimals: 2,
+            originalCurrency: "USD",
+            signal: "SELL",
+            strength: 60,
+            bestLap: "1h",
+            lapRatings: { "5m": "Neutral", "15m": "Sell", "1h": "Strong Sell", "1D": "Neutral" },
+            rationale: "JNJ has broken below its 50-day moving average on the 1-hour chart. Bearish momentum is increasing with rising volume on sell-offs. Short-term target at $148.00."
+        },
+        {
             id: "JPM",
             tvSymbol: "NYSE:JPM",
             name: "JPMorgan Chase & Co.",
@@ -321,6 +353,22 @@ document.addEventListener("DOMContentLoaded", () => {
             bestLap: "1h",
             lapRatings: { "5m": "Sell", "15m": "Sell", "1h": "Strong Sell", "1D": "Neutral" },
             rationale: "Wipro is facing resistance at the 490 level and has formed a bearish double top pattern on the 1-hour chart. The MACD has crossed over to the downside, suggesting a potential move lower towards the 475 support level."
+        },
+        {
+            id: "KOTAKBANK",
+            tvSymbol: "NSE:KOTAKBANK",
+            name: "Kotak Mahindra Bank",
+            category: "stocks",
+            exchange: "NSE",
+            country: "India",
+            basePriceUSD: 1750.00 / 83.5,
+            priceDecimals: 2,
+            originalCurrency: "INR",
+            signal: "NEUTRAL",
+            strength: 50,
+            bestLap: "1D",
+            lapRatings: { "5m": "Sell", "15m": "Neutral", "1h": "Neutral", "1D": "Buy" },
+            rationale: "Kotak Bank is trading in a narrow range. Long-term outlook is positive, but short-term indicators are mixed. Awaiting a clear breakout above 1780 or breakdown below 1720."
         },
         {
             id: "BTCUSD",
@@ -598,7 +646,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const marketTickerTrack = document.getElementById('market-ticker-track');
 
-
     // --- HELPER UTILITIES FOR CURRENCY ---
 
     // Formats numbers cleanly as currency strings, converting from USD to activeCurrency for display
@@ -626,6 +673,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: 'BTCUSD', display: 'BTC' },
         { id: 'NVDA', display: 'NVDA' },
         { id: 'TSLA', display: 'TSLA' },
+            { id: 'META', display: 'META' }, // Added Meta Platforms Inc. to the ticker
         { id: 'RELIANCE', display: 'RELIANCE' },
         { id: 'GOLD', display: 'Gold' },
         { id: 'EURUSD', display: 'EUR/USD' }
