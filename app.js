@@ -1,5 +1,23 @@
 // ApexTrader AI - Application Logic
 document.addEventListener("DOMContentLoaded", () => {
+    // --- INJECT & ANIMATE LOGO ---
+    // To enable CSS animation on the SVG paths, we inject it directly into the DOM.
+    const logoIconContainer = document.querySelector('.logo-icon');
+    if (logoIconContainer) {
+        logoIconContainer.innerHTML = `
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="logoGradient" x1="3" y1="21" x2="22" y2="5" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#6366F1"/>
+                        <stop offset="1" stop-color="#06B6D4"/>
+                    </linearGradient>
+                </defs>
+                <path class="logo-path-circle" d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3" stroke="url(#logoGradient)" stroke-width="2.5" stroke-linecap="round"/>
+                <path class="logo-path-breakout" d="M8 15L12 11L16 14L22 5" stroke="url(#logoGradient)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        `;
+    }
+
     // --- WATCHLIST & MARKET DATABASE ---
     const assetsData = [
         {
