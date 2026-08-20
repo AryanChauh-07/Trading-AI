@@ -63,3 +63,302 @@
     font-weight: 600;
     color: var(--color-indigo);
 }
+
+/* AI Signals page styles */
+.signals-page {
+    min-height: 100vh;
+}
+
+.signals-container {
+    max-width: 1200px;
+}
+
+.signal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 28px;
+}
+
+.signal-header__copy {
+    flex: 1;
+    text-align: left;
+}
+
+.signal-header__copy h1 {
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+.signal-header__copy p {
+    max-width: 700px;
+    margin: 0;
+}
+
+.signal-header__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.signal-topbar {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(160px, 1fr));
+    gap: 14px;
+    padding: 18px;
+}
+
+.summary-metric {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.summary-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.summary-metric strong {
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+}
+
+.summary-metric--accent {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(6, 182, 212, 0.12));
+    border-color: rgba(99, 102, 241, 0.25);
+}
+
+.signal-panel {
+    padding: 20px 20px 10px;
+}
+
+.signal-panel__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding: 0 6px;
+}
+
+.signal-panel__eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-cyan);
+    margin-bottom: 6px;
+}
+
+.signal-panel__header h2 {
+    font-size: 26px;
+    letter-spacing: -0.04em;
+}
+
+.signal-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.signal-filter {
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.signal-filter:hover,
+.signal-filter.is-active {
+    border-color: rgba(99, 102, 241, 0.3);
+    background: rgba(99, 102, 241, 0.12);
+    color: var(--text-primary);
+}
+
+.signal-feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    padding: 6px 0 12px;
+}
+
+.signal-card {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.76), rgba(17, 24, 39, 0.94));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    padding: 18px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.signal-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(99, 102, 241, 0.28);
+}
+
+.signal-card--buy {
+    border-color: rgba(16, 185, 129, 0.38);
+}
+
+.signal-card--sell {
+    border-color: rgba(239, 68, 68, 0.38);
+}
+
+.signal-card--neutral {
+    border-color: rgba(245, 158, 11, 0.38);
+}
+
+.signal-card__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.signal-card__symbol {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+.signal-card h3 {
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+}
+
+.signal-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.signal-badge--buy {
+    background: rgba(16, 185, 129, 0.12);
+    color: var(--color-buy);
+    border: 1px solid rgba(16, 185, 129, 0.28);
+}
+
+.signal-badge--sell {
+    background: rgba(239, 68, 68, 0.12);
+    color: var(--color-sell);
+    border: 1px solid rgba(239, 68, 68, 0.28);
+}
+
+.signal-badge--neutral {
+    background: rgba(245, 158, 11, 0.12);
+    color: var(--color-neutral);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.signal-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    font-size: 12px;
+    text-transform: capitalize;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.signal-card__confidence {
+    margin-bottom: 12px;
+}
+
+.confidence-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.confidence-row strong {
+    color: var(--text-primary);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.confidence-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.confidence-bar span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--color-buy), var(--color-indigo), var(--color-cyan));
+}
+
+.signal-card__rationale {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.signal-empty {
+    display: grid;
+    place-items: center;
+    min-height: 180px;
+    border: 1px dashed rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.02);
+}
+
+@media (max-width: 900px) {
+    .signal-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .signal-topbar {
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .signal-topbar {
+        grid-template-columns: 1fr;
+    }
+
+    .signal-panel__header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .signal-card__header {
+        flex-direction: column;
+    }
+}
